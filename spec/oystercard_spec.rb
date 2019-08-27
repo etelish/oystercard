@@ -16,4 +16,17 @@ describe Oystercard do
 it "deducts money from oystercard" do
   expect(subject).to respond_to(:deduct).with(1).argument
  end
+
+it "updates whether oystercard is in journey" do
+  expect(subject.in_journey?).to eq(false)
+end
+
+it "touches in to start a journey" do
+  expect(subject.touch_in.in_journey?).to eq(true)
+end
+
+it "touches out to end a journey" do
+  expect(subject.touch_in.touch_out.in_journey?).to eq(false)
+end
+
 end

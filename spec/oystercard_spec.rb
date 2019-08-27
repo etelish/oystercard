@@ -8,4 +8,8 @@ describe Oystercard do
   it 'allows balance top_up' do
   expect(subject).to respond_to(:top_up).with(1).argument
   end
+
+  it "has a limit to how much you can top up" do
+  expect { subject.top_up(Oystercard::LIMIT + 1) }.to raise_error("Oystercard has reached #{Oystercard::LIMIT}")
+  end
 end

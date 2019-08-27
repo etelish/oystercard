@@ -22,11 +22,16 @@ it "updates whether oystercard is in journey" do
 end
 
 it "touches in to start a journey" do
+  subject.top_up(5)
   expect(subject.touch_in.in_journey?).to eq(true)
 end
 
 it "touches out to end a journey" do
   expect(subject.touch_in.touch_out.in_journey?).to eq(false)
+end
+
+it "raises error if insufficient funds" do
+  expect{ subject.touch_in }.to raise_error("insufficient funds")
 end
 
 end

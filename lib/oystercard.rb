@@ -11,4 +11,7 @@ class Oystercard
     raise "Oystercard has reached #{LIMIT}" if (@balance + amount) > LIMIT
   end
 
+  def deduct(amount)
+  end
+
 end
